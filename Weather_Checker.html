@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Weather_Checker.css">
+    <link rel="icon" href="https://fav.farm/⛅">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+     <div class="Main-Container">
+        <input type="text" class="Inp_Text" placeholder="Enter A Place Or City"></input>
+      <div class="TypeOfWeather">
+       <li> 
+         <input type="radio" name="Weather" id="current">
+         <label for="current" title="today's" >Current Weather</label>
+       </li>
+       <li>
+         <input type="radio" name="Weather" id="History">
+         <label for="History" title="past 5 days">History</label>
+       </li> 
+       <li>  
+         <input type="radio" name="Weather" id="forecast">
+         <label for="forecast" title="next 3 days">forecast</label>
+       </li>
+        </div>
+        <button id="SubmitButton" onclick="Validate()">Check</button>
+     </div>
+     
+     
+    <script src="Weather_Checker.js"></script>
+</body>
+</html>
