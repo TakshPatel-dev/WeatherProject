@@ -15,10 +15,10 @@
      .Temp-Container > * {flex: 1  1 50%; font-size: 24px;list-style: none;}
      .Humidity{font-size: 24px;text-align: center;margin-top: 15px;}
     </style>
-    <script></script>
+    
     
 <body>
-  <div class="Main-Container">
+<!--  <div class="Main-Container">
     <div class="card">
     <div class="city">Vadodara</div>
     <div class="country">India</div>
@@ -30,6 +30,22 @@
     </div>
     <div class="Humidity">Humidity:77</div>
   </div>
-</div>   
+</div> -->
+<script>
+    let data = JSON.parse(localStorage.getItem(`data`))
+    document.body.innerHTML = `<div class="Main-Container">
+    <div class="card">
+    <div class="city">${data.location.name}</div>
+    <div class="country">${data.location.country}</div>
+    <h2>Temperature</h2> 
+    <div class="Temp-Container">
+       
+        <li>${data.current.temp_c}℃</li>
+        <li>${data.current.temp_f}℉</li>
+    </div>
+    <div class="Humidity">Humidity:${data.current.humidity}</div>
+  </div>
+</div>`
+</script>
 </body>
 </html>
