@@ -32,7 +32,7 @@ async function HistoryWeather(){
 
 }
 async function forecastWeather(){
-  let api = `http://api.weatherapi.com/v1/forecast.json?key=17fbee2d5e634fbe89181703241107&q=${place.value}&days=3&aqi=no&alerts=no`
+  let api = `https://api.weatherapi.com/v1/forecast.json?key=17fbee2d5e634fbe89181703241107&q=${place.value}&days=3&aqi=no&alerts=no`
   let data = await(fetch(api).then(res=>res.json()))
   checkingErrors(data,api)
   if(result){
