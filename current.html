@@ -10,34 +10,27 @@
      .city{font-size: 3rem;color:rgba(2, 2, 2, 0.896);font-weight:bolder;text-shadow:7px -3px 20px rgba(26, 0, 11, 0.869);}
      .country{font-size: 2.5rem;color:rgba(0, 0, 3, 0.877);}
      h2{font-size: 36px;color: rgb(208, 24, 24);padding: 15px 17px;}
-     .card{border: 2px solid rgb(44, 44, 51);border-radius: 5px;background-color: rgba(42, 37, 37, 0.646);padding: 17px 15px;text-align: center;}
+     .card{border: 2px solid rgb(44, 44, 51);border-radius: 5px;background-color: rgba(42, 37, 37, 0.646);padding: 20px 15px;text-align: center;}
      .Temp-Container{display: flex;padding:25px 18px}
-     .Temp-Container > * {flex: 1  1 50%; font-size: 24px;list-style: none;}
+     .Temp-Container > * {flex: 1  1 50%; font-size: 28px;list-style: none;}
      .Humidity{font-size: 24px;text-align: center;margin-top: 15px;}
+     p{font-size: 24px;}
+     .time{font-size: 24px;}
     </style>
     
     
 <body>
-<!--  <div class="Main-Container">
-    <div class="card">
-    <div class="city">Vadodara</div>
-    <div class="country">India</div>
-    <h2>Temperature</h2> 
-    <div class="Temp-Container">
-       
-        <li>13℃</li>
-        <li>78℉</li>
-    </div>
-    <div class="Humidity">Humidity:77</div>
-  </div>
-</div> -->
 <script>
     let data = JSON.parse(localStorage.getItem(`data`))
     document.body.innerHTML = `<div class="Main-Container">
     <div class="card">
     <div class="city">${data.location.name}</div>
     <div class="country">${data.location.country}</div>
-    <h2>Temperature</h2> 
+    <div class="time">${data.location.localtime}<div>
+
+    <h2>Temperature</h2>
+    <img src="${data.current.condition.icon}"class="icon">
+    <p>"${data.current.condition.text}"</p>
     <div class="Temp-Container">
        
         <li>${data.current.temp_c}℃</li>
@@ -46,6 +39,9 @@
     <div class="Humidity">Humidity:${data.current.humidity}</div>
   </div>
 </div>`
+ window.addEventListener(`beforeunload`,()=>{
+    localStorage.removeItem(`data`)
+ })
 </script>
 </body>
 </html>
