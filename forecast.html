@@ -24,57 +24,13 @@
 </head>
 <body>
 <div class="Main-Container">
-
-    <!--<div class="card card1">
-      <div class="city">Vadodara</div>
-      <div class="country">India</div>
-      <div class="time">22/10/2006</div>
-      <h2>Temperature</h2>
-      <img src="${data.current.condition.icon}"class="icon">
-      <p>"Hello"</p>
-      <div class="Temp-Container">
-        <li>22℃</li>
-        <li>22℉</li>
-        
-      </div>
-      <div class="Humidity">Humidity:90</div>
-
-    </div>
-    <div class="card card2">
-      <div class="city">Vadodara</div>
-      <div class="country">India</div>
-      <div class="time">22/10/2006</div>
-      <h2>Temperature</h2>
-      <img src="${data.current.condition.icon}"class="icon">
-      <p>"Hello"</p>
-      <div class="Temp-Container">
-        <li>22℃</li>
-        <li>88℉</li>
-      </div>
-      <div class="Humidity">Humidity:90</div>
-
-    </div>
-    <div class="card card3">
-      <div class="city">Vadodara</div>
-      <div class="country">India</div>
-      <div class="time">22/10/2006</div>
-      <h2>Temperature</h2>
-      <img src="${data.current.condition.icon}"class="icon">
-      <p>"Hello"</p>
-      <div class="Temp-Container">
-        <li>22℃</li>
-        <li>88℉</li>
-      </div>
-      <div class="Humidity">Humidity:90</div>
-
-    </div> -->
-
 </div>
 <script>
   let Main_Container = document.querySelector(`.Main-Container`)
   let data = JSON.parse(localStorage.getItem(`data`))
   let forecastData = data.forecast.forecastday
-  Main_Container.innerHTML=""
+  Main_Container.innerHTML="";
+  //generating html for each weather data
   forecastData.forEach((element,index) => {
     Main_Container.innerHTML += `<div class="card card1">
       <div class="city">${data.location.name}</div>
@@ -92,10 +48,10 @@
     </div>`
     
   });
-  window.addEventListener(`beforeunload`),()=>{
+  //removing data stored in localstorage as browser closes
+  window.addEventListener(`beforeunload`,()=>{
     localStorage.removeItem(`data`)
-    console.log(`hi`)
-    }
+    })
 </script>
 </body>
 </html>

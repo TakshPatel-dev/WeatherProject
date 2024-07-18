@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History</title>
+    <style>
+        :root{background-image: url(https://images.unsplash.com/photo-1579619572008-3fe9f19748ea?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);height: 100%;background-repeat: no-repeat;background-position: center;letter-spacing: 2px;background-size:10000px,10000px;}
+        .Main-Container{display: flex;justify-content: center;margin: 0 auto;font-family:Arial, Helvetica, sans-serif;flex-wrap: wrap;}
+        .card{flex: 1 1 25%  ;text-align: center;display: flex;flex-wrap:wrap;flex-direction: column;align-items: center;border: 2px solid rgb(44, 44, 51);border-radius: 5px;background-color: rgba(42, 37, 37, 0.646);padding: 20px 15px;margin: 15px;}
+        .city{font-size: 3rem;color:rgba(2, 2, 2, 0.896);font-weight:bolder;text-shadow:7px -3px 20px rgba(26, 0, 11, 0.869);}
+        .country{font-size: 2.5rem;color:rgba(0, 0, 3, 0.877);}
+        h2{font-size: 36px;color: rgb(208, 24, 24);padding: 15px 17px;}
+        .Temp-Container{display: flex;padding:25px 18px}
+        .Temp-Container > * {flex:1; font-size: 28px;list-style: none;margin-left: 25px;}
+        p{font-size: 24px;}
+        .time{font-size: 24px;}
+        @media all and (max-width:600px){
+          .Main-Container{flex-direction: column;}
+          :root{background-size: 10000px,10000px;}
+        }
+  
+      </style>
+</head>
+<body>
+    <div class="Main-Container">
+    </div>
+<script>
+    let Main_Container = document.querySelector(`.Main-Container`)
+        let data = JSON.parse(localStorage.getItem(`data`))
+        
+        Main_Container.innerHTML="";
+        //generating html for each weather data
+          data.forEach((element,index) => {
+          Main_Container.innerHTML += `<div class="card card${index}">
+            <div class="city">${element.location.name}</div>
+            <div class="country">${element.location.country}</div>
+            <div class="time">${element.forecast.forecastday[0].date}</div>
+            <h2>Temperature</h2>
+            <img src="${element.forecast.forecastday[0].day.condition.icon}"class="icon">
+            <p>"${element.forecast.forecastday[0].day.condition.text}"</p>
+            <div class="Temp-Container">
+              <li>${element.forecast.forecastday[0].day.avgtemp_c}℃</li>
+              <li>${element.forecast.forecastday[0].day.avgtemp_f}℉</li>
+              
+            </div>
+      
+          </div>`
+          
+        });
+        //removing data stored in localstorage as browser closes
+       // window.addEventListener(`beforeunload`,()=>{
+         // localStorage.removeItem(`data`)
+        //})
+</script>
+</body>
+</html>

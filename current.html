@@ -22,6 +22,7 @@
 <body>
 <script>
     let data = JSON.parse(localStorage.getItem(`data`))
+    //generating html for current weather data
     document.body.innerHTML = `<div class="Main-Container">
     <div class="card">
     <div class="city">${data.location.name}</div>
@@ -39,6 +40,7 @@
     <div class="Humidity">Humidity:${data.current.humidity}</div>
   </div>
 </div>`
+//removing the localstorage data when user leaves the page
  window.addEventListener(`beforeunload`,()=>{
     localStorage.removeItem(`data`)
  })
